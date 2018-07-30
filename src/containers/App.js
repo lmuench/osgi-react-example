@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route} from 'react-router-dom';
-import api from './api';
-import Coin from './Coin';
-import TopBar from './TopBar';
+import cmc from '../api/cmc';
+import Coin from '../components/Coin';
+import TopBar from '../components/TopBar';
 
 class App extends Component {
   constructor(props) {
     super();
     this.state = {
       top10: []
-    };    
+    };
   }
 
   async componentDidMount() {
-    const top10 = await api.fetchPairs();
+    const top10 = await cmc.top10.get();
     this.setState({
       top10: top10
     });
