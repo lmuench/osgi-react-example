@@ -1,6 +1,8 @@
 {
-  "name": "lab-node",
+  "name": "osgi-react-example",
   "version": "0.1.0",
+  "author": "Ludwig Muench",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "react": "^16.4.1",

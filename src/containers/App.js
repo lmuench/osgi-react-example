@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route} from 'react-router-dom';
-import cmc from '../api/cmc';
+import agenda from '../api/agenda';
 import Coin from '../components/Coin';
 import TopBar from '../components/TopBar';
 
@@ -9,21 +9,21 @@ class App extends Component {
   constructor(props) {
     super();
     this.state = {
-      top10: []
+      conferences: []
     };
   }
 
   async componentDidMount() {
-    const top10 = await cmc.top10.get();
+    const conferences = await agenda.get();
     this.setState({
-      top10: top10
+      conferences: Array.isArray(conferences) ? conferences : []
     });
   }
 
   render = () => (
     <div className="App">
-      <TopBar items={this.state.top10} />
-      <Route path={`/coins/:symbol`} component={Coin} />
+      <TopBar path="agenda" items={this.state.conferences} />
+      <Route path="/agenda/:name" component={Coin} />
     </div>
   );
 }
