@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route} from 'react-router-dom';
-import agenda from '../api/agenda';
-import Coin from '../components/Coin';
+import conferences from '../api/conferences';
+import Conference from '../containers/Conference';
 import TopBar from '../components/TopBar';
 
 class App extends Component {
@@ -14,16 +14,15 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const conferences = await agenda.get();
     this.setState({
-      conferences: Array.isArray(conferences) ? conferences : []
+      conferences: await conferences.get()
     });
   }
 
   render = () => (
     <div className="App">
-      <TopBar path="agenda" items={this.state.conferences} />
-      <Route path="/agenda/:name" component={Coin} />
+      <TopBar path="conferences" items={this.state.conferences} />
+      <Route path="/conferences/:name" component={Conference} />
     </div>
   );
 }
