@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
 import { Route} from 'react-router-dom';
 import conferences from '../api/conferences';
-import Conference from '../containers/Conference';
+import ConferencesContainer from '../containers/ConferencesContainer';
 import TopBar from '../components/TopBar';
 
 class App extends Component {
@@ -22,7 +21,7 @@ class App extends Component {
   render = () => (
     <div className="App">
       <TopBar path="conferences" items={this.state.conferences} />
-      <Route path="/conferences/:name" component={Conference} />
+      <Route path="/conferences/:name" component={ConferencesContainer} />
     </div>
   );
 }

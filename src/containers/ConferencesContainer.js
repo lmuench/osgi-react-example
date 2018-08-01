@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import conferences from '../api/conferences';
+import ConferenceShow from '../components/conferences/ConferenceShow'
 
-class App extends Component {
+class ConferencesContainer extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -24,9 +25,9 @@ class App extends Component {
 
   render = () => (
     <div className="Conference">
-      {JSON.stringify(this.state.conference)}
+      <ConferenceShow conference={this.state.conference} />
     </div>
   );
 }
 
-export default App;
+export default ConferencesContainer;
