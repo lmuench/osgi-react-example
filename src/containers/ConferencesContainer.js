@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import conferences from '../api/conferences';
-import ConferenceShow from '../components/conferences/ConferenceShow'
+import ConferenceShow from '../components/conferences/ConferenceShow';
 
 class ConferencesContainer extends Component {
   constructor(props) {
