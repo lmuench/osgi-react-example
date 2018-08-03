@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Route} from 'react-router-dom';
-import conferences from '../api/conferences';
+import apiConfig from '../api/apiConfig';
+import conferencesApi from '../api/conferencesApi';
+import conferencesMockApi from '../api/conferencesMockApi';
 import ConferencesContainer from '../containers/ConferencesContainer';
 import TopBar from '../components/TopBar';
 
+const api = apiConfig.mock ? conferencesMockApi : conferencesApi;
+
 class App extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       conferences: []
     };
@@ -14,7 +18,7 @@ class App extends Component {
 
   async componentDidMount() {
     this.setState({
-      conferences: await conferences.get()
+      conferences: await api.get()
     });
   }
 

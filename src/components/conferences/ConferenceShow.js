@@ -9,12 +9,16 @@ const Td = props => Object.values(props.conference).map(value => <td>{value}</td
 
 const ConferenceShow = props => (
   <table>
-    <tr>
-      <Th conference={props.conference} />
-    </tr>
-    <tr>
-      <Td conference={props.conference} />
-    </tr>
+    <thead>
+      <tr>
+        <Th conference={props.conference} />
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <Td conference={props.conference} />
+      </tr>
+    </tbody>
   </table>
 );
 
