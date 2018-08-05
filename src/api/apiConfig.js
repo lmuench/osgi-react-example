@@ -1,5 +1,5 @@
 const apiConfig = {};
 
-apiConfig.mock = true;
+apiConfig.mockSensors = true;
 
 export default apiConfig;

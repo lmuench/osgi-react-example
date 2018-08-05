@@ -1,38 +1,42 @@
 import React, { Component } from 'react';
-import { Route} from 'react-router-dom';
 import apiConfig from '../api/apiConfig';
 // import sensorsApi from '../api/sensorsApi';
 // import sensorsMockApi from '../api/sensorsMockApi';
 import sensorsApi from '../api/sensorsApi';
 import sensorsMockApi from '../api/sensorsMockApi';
-import SensorsContainer from '../containers/SensorsContainer';
-import TopBar from '../components/TopBar';
+import SensorShow from '../components/sensors/SensorShow';
 import store from '../store';
-import StoreView from '../components/devtools/StoreView'
 
 const api = apiConfig.mockSensors ? sensorsMockApi : sensorsApi;
 
-class App extends Component {
+class SensorsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sensors: []
+      sensor: {}
     };
+    store.clicks = 0;
   }
 
   async componentDidMount() {
     this.setState({
-      sensors: await api.get()
+      sensor: await api.name.get(this.props.match.params.name)
     });
   }
-  
+
+  async componentDidUpdate(prevProps) {
+    if (prevProps === this.props) return;
+    this.setState({
+      sensor: await api.name.get(this.props.match.params.name)
+    });
+    store.clicks += 1;
+  }
+
   render = () => (
-    <div className="App">
-      <TopBar path="sensors" items={this.state.sensors} />
-      <Route path="/sensors/:name" component={SensorsContainer} />
-      <StoreView store={store} />
+    <div className="Sensor">
+      <SensorShow sensor={this.state.sensor} />
     </div>
   );
 }
 
-export default App;
+export default SensorsContainer;
