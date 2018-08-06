@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Route} from 'react-router-dom';
 import config from '../config';
-// import sensorsApi from '../api/sensorsApi';
-// import sensorsMockApi from '../api/sensorsMockApi';
 import sensorsApi from '../api/sensorsApi';
 import sensorsMockApi from '../api/sensorsMockApi';
 import SensorsContainer from '../containers/SensorsContainer';

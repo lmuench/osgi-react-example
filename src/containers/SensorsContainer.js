@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import config from '../config';
-// import sensorsApi from '../api/sensorsApi';
-// import sensorsMockApi from '../api/sensorsMockApi';
 import sensorsApi from '../api/sensorsApi';
 import sensorsMockApi from '../api/sensorsMockApi';
 import SensorShow from '../components/sensors/SensorShow';
-import store from '../store';
-
-store.sensorContainerUpdates = 0;
+import { _incrementSensorContainerUpdates } from '../actions';
 
 const api = config.mockSensorsApi ? sensorsMockApi : sensorsApi;
 
@@ -30,7 +26,7 @@ class SensorsContainer extends Component {
     this.setState({
       sensor: await api.name.get(this.props.match.params.name)
     });
-    store.sensorContainerUpdates += 1;
+    _incrementSensorContainerUpdates();
   }
 
   render = () => (
