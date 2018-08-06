@@ -7,7 +7,7 @@ import sensorsMockApi from '../api/sensorsMockApi';
 import SensorShow from '../components/sensors/SensorShow';
 import store from '../store';
 
-const api = config.api.mockSensors ? sensorsMockApi : sensorsApi;
+const api = config.mockSensorsApi ? sensorsMockApi : sensorsApi;
 
 class SensorsContainer extends Component {
   constructor(props) {

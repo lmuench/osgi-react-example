@@ -10,7 +10,19 @@ import TopBar from '../components/TopBar';
 import store from '../store';
 import ObjectView from '../components/devtools/ObjectView'
 
-const api = config.api.mockSensors ? sensorsMockApi : sensorsApi;
+const api = config.mockSensorsApi ? sensorsMockApi : sensorsApi;
+
+const WrappedObjectView = props => {
+  if (props.showStore && props.showConfig) {
+    return <ObjectView object={{ ...store, ...config }} />;
+  } else if (props.showStore) {
+    return <ObjectView object={store} />;
+  } else if (props.showConfig) {
+    return <ObjectView object={config} />;
+  } else {
+    return null;
+  }
+}
 
 class App extends Component {
   constructor(props) {
@@ -18,6 +30,7 @@ class App extends Component {
     this.state = {
       sensors: []
     };
+    store.foo = 'bar'
   }
 
   async componentDidMount() {
@@ -30,7 +43,7 @@ class App extends Component {
     <div className="App">
       <TopBar path="sensors" items={this.state.sensors} />
       <Route path="/sensors/:name" component={SensorsContainer} />
-      <ObjectView object={{ store, config }} />
+      <WrappedObjectView showStore={config.showStore} showConfig={config.showConfig} />
     </div>
   );
 }

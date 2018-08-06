@@ -1,5 +1,6 @@
 const config = {};
-config.api = {};
-config.api.mockSensors = true;
+config.mockSensorsApi = true;
+config.showStore = true;
+config.showConfig = true;
 
 export default config;
