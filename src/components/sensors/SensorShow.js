@@ -1,11 +1,12 @@
 import React from 'react';
+import stringUtils from '../../utils/stringUtils'
 
-String.prototype.capitalize = function () {
-  return this.charAt(0).toUpperCase() + this.slice(1);
-}
-
-const Th = props => Object.keys(props.sensor).map(key => <th>{key.capitalize()}</th>);
-const Td = props => Object.values(props.sensor).map(value => <td>{value}</td>);
+const Th = props => Object.keys(props.sensor).map((key, i) =>
+  <th key={i}>{stringUtils.capitalize(key)}</th>
+);
+const Td = props => Object.values(props.sensor).map((value, i) =>
+  <td key={i}>{value}</td>)
+;
 
 const SensorShow = props => (
   <table>

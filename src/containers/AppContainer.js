@@ -30,7 +30,6 @@ class App extends Component {
     this.state = {
       sensors: []
     };
-    store.foo = 'bar'
   }
 
   async componentDidMount() {

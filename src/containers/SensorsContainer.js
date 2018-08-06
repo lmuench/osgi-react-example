@@ -7,6 +7,8 @@ import sensorsMockApi from '../api/sensorsMockApi';
 import SensorShow from '../components/sensors/SensorShow';
 import store from '../store';
 
+store.sensorContainerUpdates = 0;
+
 const api = config.mockSensorsApi ? sensorsMockApi : sensorsApi;
 
 class SensorsContainer extends Component {
@@ -15,7 +17,6 @@ class SensorsContainer extends Component {
     this.state = {
       sensor: {}
     };
-    store.clicks = 0;
   }
 
   async componentDidMount() {
@@ -29,7 +30,7 @@ class SensorsContainer extends Component {
     this.setState({
       sensor: await api.name.get(this.props.match.params.name)
     });
-    store.clicks += 1;
+    store.sensorContainerUpdates += 1;
   }
 
   render = () => (
