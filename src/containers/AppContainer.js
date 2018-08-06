@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route} from 'react-router-dom';
-import apiConfig from '../api/apiConfig';
+import config from '../config';
 // import sensorsApi from '../api/sensorsApi';
 // import sensorsMockApi from '../api/sensorsMockApi';
 import sensorsApi from '../api/sensorsApi';
@@ -8,9 +8,9 @@ import sensorsMockApi from '../api/sensorsMockApi';
 import SensorsContainer from '../containers/SensorsContainer';
 import TopBar from '../components/TopBar';
 import store from '../store';
-import StoreView from '../components/devtools/StoreView'
+import ObjectView from '../components/devtools/ObjectView'
 
-const api = apiConfig.mockSensors ? sensorsMockApi : sensorsApi;
+const api = config.api.mockSensors ? sensorsMockApi : sensorsApi;
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class App extends Component {
     <div className="App">
       <TopBar path="sensors" items={this.state.sensors} />
       <Route path="/sensors/:name" component={SensorsContainer} />
-      <StoreView store={store} />
+      <ObjectView object={{ store, config }} />
     </div>
   );
 }

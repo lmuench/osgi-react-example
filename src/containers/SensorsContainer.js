@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import apiConfig from '../api/apiConfig';
+import config from '../config';
 // import sensorsApi from '../api/sensorsApi';
 // import sensorsMockApi from '../api/sensorsMockApi';
 import sensorsApi from '../api/sensorsApi';
@@ -7,7 +7,7 @@ import sensorsMockApi from '../api/sensorsMockApi';
 import SensorShow from '../components/sensors/SensorShow';
 import store from '../store';
 
-const api = apiConfig.mockSensors ? sensorsMockApi : sensorsApi;
+const api = config.api.mockSensors ? sensorsMockApi : sensorsApi;
 
 class SensorsContainer extends Component {
   constructor(props) {
