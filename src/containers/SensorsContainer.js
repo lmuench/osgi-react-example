@@ -27,6 +27,7 @@ class SensorsContainer extends Component {
       sensor: await api.name.get(this.props.match.params.name)
     });
     this.props.incrementCounter();
+    this.props.incrementBrokenCounter();
   }
 
   render = () => (
@@ -40,6 +41,9 @@ const mapDispatchToProps = dispatch => {
   return {
     incrementCounter: () => dispatch({
       type: 'INCREMENT'
+    }),
+    incrementBrokenCounter: () => dispatch({
+      type: 'INCREMENT_BROKEN'
     })
   }
 }

@@ -5,7 +5,7 @@ import AppContainer from './containers/AppContainer';
 import registerServiceWorker from './registerServiceWorker';
 import { HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
