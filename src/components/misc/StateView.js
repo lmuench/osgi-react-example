@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const StateView = props => {
+const StateView = ({ reduxState }) => {
   return (
     <pre style={{
       fontSize: '85%',
@@ -11,12 +12,16 @@ const StateView = props => {
       bottom: 0
     }}>
       {
-        Object.keys(props.state).map(key =>
-          `${key}: ${JSON.stringify(props.state[key], null, 2)}\n`
+        Object.keys(reduxState).map(key =>
+          `${key}: ${JSON.stringify(reduxState[key], null, 2)}\n`
         )
       }
     </pre>
   );
 };
 
-export default StateView;
+const mapStateToProps = state => {
+  return { reduxState: state }
+}
+
+export default connect(mapStateToProps)(StateView);

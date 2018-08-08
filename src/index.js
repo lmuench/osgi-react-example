@@ -4,11 +4,15 @@ import './index.css';
 import AppContainer from './containers/AppContainer';
 import registerServiceWorker from './registerServiceWorker';
 import { HashRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 ReactDOM.render(
-  <Router>
-    <AppContainer />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <AppContainer />
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 registerServiceWorker();
