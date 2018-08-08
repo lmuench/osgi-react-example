@@ -5,16 +5,16 @@ import sensorsApi from '../api/sensorsApi';
 import sensorsMockApi from '../api/sensorsMockApi';
 import SensorsContainer from '../containers/SensorsContainer';
 import TopBar from '../components/TopBar';
-import store from '../store';
 import ObjectView from '../components/devtools/ObjectView'
+import store from '../redux/store';
 
 const api = config.mockSensorsApi ? sensorsMockApi : sensorsApi;
 
 const WrappedObjectView = props => {
   if (props.showStore && props.showConfig) {
-    return <ObjectView object={{ ...store, ...config }} />;
+    return <ObjectView object={{ ...store.getState(), ...config }} />;
   } else if (props.showStore) {
-    return <ObjectView object={store} />;
+    return <ObjectView object={store.getState()} />;
   } else if (props.showConfig) {
     return <ObjectView object={config} />;
   } else {

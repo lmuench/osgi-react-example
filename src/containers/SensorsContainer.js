@@ -3,7 +3,7 @@ import config from '../config';
 import sensorsApi from '../api/sensorsApi';
 import sensorsMockApi from '../api/sensorsMockApi';
 import SensorShow from '../components/sensors/SensorShow';
-import { _incrementSensorContainerUpdates } from '../actions';
+import store from '../redux/store';
 
 const api = config.mockSensorsApi ? sensorsMockApi : sensorsApi;
 
@@ -26,7 +26,7 @@ class SensorsContainer extends Component {
     this.setState({
       sensor: await api.name.get(this.props.match.params.name)
     });
-    _incrementSensorContainerUpdates();
+    store.dispatch({ type: 'INCREMENT' });
   }
 
   render = () => (
