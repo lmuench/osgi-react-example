@@ -4,8 +4,8 @@ import config from '../config';
 import sensorsApi from '../api/sensorsApi';
 import sensorsMockApi from '../api/sensorsMockApi';
 import SensorsContainer from '../containers/SensorsContainer';
-import TopBar from '../components/TopBar';
-import StateView from '../components/StateView';
+import TopBar from '../components/misc/TopBar';
+import StateView from '../components/misc/StateView';
 import store from '../redux/store';
 
 const api = config.mockSensorsApi ? sensorsMockApi : sensorsApi;
