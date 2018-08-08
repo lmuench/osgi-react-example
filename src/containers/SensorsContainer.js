@@ -3,7 +3,7 @@ import config from '../config';
 import sensorsApi from '../api/sensorsApi';
 import sensorsMockApi from '../api/sensorsMockApi';
 import SensorShow from '../components/sensors/SensorShow';
-import store from '../redux/store';
+import { connect } from 'react-redux';
 
 const api = config.mockSensorsApi ? sensorsMockApi : sensorsApi;
 
@@ -26,7 +26,7 @@ class SensorsContainer extends Component {
     this.setState({
       sensor: await api.name.get(this.props.match.params.name)
     });
-    store.dispatch({ type: 'INCREMENT' });
+    this.props.incrementCounter();
   }
 
   render = () => (
@@ -36,4 +36,12 @@ class SensorsContainer extends Component {
   );
 }
 
-export default SensorsContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+    incrementCounter: () => dispatch({
+      type: 'INCREMENT'
+    })
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SensorsContainer);
