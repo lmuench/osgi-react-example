@@ -6,6 +6,7 @@ import sensorsMockApi from '../api/sensorsMockApi';
 import SensorsContainer from '../containers/SensorsContainer';
 import TopBar from '../components/misc/TopBar';
 import StateView from '../components/misc/StateView';
+import ApiBuilderContainer from './ApiBuilderContainer';
 
 const api = config.mockSensorsApi ? sensorsMockApi : sensorsApi;
 
@@ -26,7 +27,8 @@ class App extends Component {
   render = () => (
     <div className="App">
       <TopBar path="sensors" items={this.state.sensors} />
-      <Route path="/sensors/:name" component={SensorsContainer} />
+      {/* <Route path="/sensors/:name" component={SensorsContainer} /> */}
+      <ApiBuilderContainer />
       {config.showStore && <StateView />}
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import AppContainer from './containers/AppContainer';
 import registerServiceWorker from './registerServiceWorker';
 import { HashRouter as Router } from 'react-router-dom';

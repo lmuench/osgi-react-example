@@ -1,15 +1,15 @@
 const sensorsMockApi = {};
 
 sensorsMockApi.get = async () => (
-  ['Foo', 'Bar']
+  ['sd1', 'sd2']
 );
 
 sensorsMockApi.name = {};
 
 sensorsMockApi.name.get = async name => (
   {
-    location: 'Foo',
-    name: 'Bar'
+    name: name,
+    type: 'smoke'
   }
 );
 
