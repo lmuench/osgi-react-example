@@ -51,7 +51,7 @@ class App extends Component {
   
   render = () => (
     <div className="App">
-      <TopBar path="sensors" items={this.state.sensors} />
+      {/* <TopBar path="sensors" items={this.state.sensors} /> */}
       {/* <Route path="/sensors/:name" component={SensorsContainer} /> */}
       {/* <ApiBuilderContainer2 /> */}
       <ResourceTable data={resources} />

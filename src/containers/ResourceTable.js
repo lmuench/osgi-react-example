@@ -5,7 +5,7 @@ import sematable, { Table } from 'sematable';
 export const RESOURCE_TABLE = 'resourceTable';
 
 const columns = [
-  { key: 'id', primaryKey: true, header: 'ID' },
+  { key: 'id', primaryKey: true, header: 'ID', sortable: true },
   { key: 'name', header: 'Name', searchable: true, sortable: true },
   {
     key: 'type',
@@ -17,7 +17,8 @@ const columns = [
       'SENSOR:SMOKE',
       'SENSOR:TEMPERATURE',
     ],
-    getFilterClassName: value => `col-${value.toLowerCase()}`
+    getFilterClassName: value => `col-${value.toLowerCase()}`,
+    sortable: true
   },
 ];
 
