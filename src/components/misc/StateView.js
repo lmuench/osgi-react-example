@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const StateView = props => {
   return (
     <pre style={{
-      fontSize: '85%',
+      fontSize: '50%',
       textAlign: 'left',
       color: '#579',
       position: 'fixed',
