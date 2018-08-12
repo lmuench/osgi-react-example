@@ -1,8 +1,8 @@
 import React from 'react';
-import stringUtils from '../../utils/stringUtils'
+import capitalize from 'lodash/capitalize';
 
 const Th = props => Object.keys(props.sensor).map((key, i) =>
-  <th key={i}>{stringUtils.capitalize(key)}</th>
+  <th key={i}>{capitalize(key)}</th>
 );
 const Td = props => Object.values(props.sensor).map((value, i) =>
   <td key={i}>{value}</td>)
